@@ -1,0 +1,13 @@
+User svusr216
+Group resgrp216
+Listen 9014
+<VirtualHost *>
+    ServerAlias trec.*
+    ServerAlias nitc.trec.*
+    DocumentRoot /vol/www/otrec/dev/cms/htdocs
+
+    <Directory /vol/www/otrec/dev/cms/htdocs>
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+

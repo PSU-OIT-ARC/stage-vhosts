@@ -1,0 +1,17 @@
+#User svusr041
+#Group resgrp041
+User svusr311
+Group resgrp311
+Listen 9004
+<VirtualHost *>
+    ServerName oep
+    ServerAlias oep.*
+    WSGIDaemonProcess oep processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  oep
+    WSGIScriptAlias / /vol/www/oep/dev/oep/wsgi.py
+    Alias /static /vol/www/oep/dev/static
+    Alias /media /vol/www/oep/dev/media
+    Alias /favicon.ico /vol/www/oep/dev/static/favicon.ico
+    Alias /robots.txt /vol/www/oep/dev/static/robots.txt
+</VirtualHost>
+

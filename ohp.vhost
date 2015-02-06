@@ -1,0 +1,18 @@
+#User svusr041
+#Group resgrp041
+User svusr311
+Group resgrp311
+Listen 9005
+<VirtualHost *>
+    ServerName ohp
+    ServerAlias ohp.*
+
+    WSGIDaemonProcess ohp processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  ohp
+    WSGIScriptAlias / /vol/www/ohp/dev/ohp/wsgi.py
+
+    Alias /static /vol/www/ohp/dev/static
+    Alias /media /vol/www/ohp/dev/media
+    Alias /favicon.ico /vol/www/ohp/dev/static/favicon.ico
+    Alias /robots.txt /vol/www/ohp/dev/static/robots.txt
+</VirtualHost>

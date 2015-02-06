@@ -1,0 +1,13 @@
+User svusr312
+Group resgrp312
+Listen 9056
+<VirtualHost *:*>
+    ServerAlias unst-pathways.*
+    DocumentRoot /vol/www/unst-pathways/dev/htdocs
+
+    <Directory /vol/www/unst-pathways/dev/htdocs>
+        AllowOverride All
+    </Directory>
+
+</VirtualHost>
+

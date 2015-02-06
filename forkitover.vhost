@@ -1,0 +1,20 @@
+User svusr330
+Group resgrp330
+Listen 9001
+<VirtualHost *>
+    ServerAlias forkitover.*
+    DocumentRoot /vol/www/forkitover/htdocs
+    RequestHeader unset Accept-Encoding 
+    
+    SecRuleRemoveById 950004
+    SecRuleRemoveById 960015
+    SecRuleRemoveById 960017
+    SecRuleRemoveById 960335
+    <Directory /vol/www/forkitover/htdocs>
+        AllowOverride All
+    </Directory>
+    <Location />
+        AddOutputFilterByType SUBSTITUTE text/html
+        Substitute "s|</body>|<script src='//cdn.research.pdx.edu/annoy-a-tron/0.0.1/annoy.js'></script>$1|iq"
+    </Location>
+</VirtualHost>

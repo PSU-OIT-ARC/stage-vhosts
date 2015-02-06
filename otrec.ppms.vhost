@@ -1,0 +1,14 @@
+User svusr216
+Group resgrp216
+Listen 9008
+<VirtualHost *:*>
+    ServerName ppms
+    ServerAlias ppms.*
+    # django
+    WSGIDaemonProcess ppms processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  ppms
+    WSGIScriptAlias / /vol/www/otrec/dev/ppms/otrec/wsgi.py
+    Alias /static /vol/www/otrec/dev/ppms/static
+    Alias /media /vol/www/otrec/dev/ppms/media
+</VirtualHost>
+

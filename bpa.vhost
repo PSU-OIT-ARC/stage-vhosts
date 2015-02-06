@@ -1,0 +1,15 @@
+User svusr333
+Group resgrp333
+Listen 9013
+<VirtualHost *>
+    ServerName bpa
+    ServerAlias bpa.*
+    # django
+    WSGIDaemonProcess bpa processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  bpa
+    WSGIScriptAlias / /vol/www/bpa/dev/bpa/wsgi.py
+
+    Alias /static /vol/www/bpa/dev/static
+    Alias /media /vol/www/bpa/dev/media
+</VirtualHost>
+

@@ -1,0 +1,10 @@
+User svusr035
+Group resgrp035
+Listen 9012
+<VirtualHost *:*>
+    ServerName ecoplexity.stage.rc.pdx.edu
+    DocumentRoot /vol/www/ecoplex/dev
+    <Directory /vol/www/ecoplex/dev>
+        allowoverride all
+    </Directory>
+</VirtualHost>

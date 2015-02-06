@@ -1,0 +1,8 @@
+User svusr299
+Group resgrp299
+Listen 9006
+<VirtualHost *:*>
+    ServerAlias tecc.*
+    DocumentRoot /vol/www/tecc/dev/htdocs
+</VirtualHost>
+

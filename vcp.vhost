@@ -1,0 +1,14 @@
+User svusr114
+Group resgrp114
+Listen 9007
+<VirtualHost *>
+    ServerName vcp
+    ServerAlias vcp.*
+
+    WSGIDaemonProcess vcp processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  vcp
+    WSGIScriptAlias / /vol/www/vcp/dev/vcp/wsgi.py
+
+    Alias /static /vol/www/vcp/dev/static
+    Alias /media/logos /vol/www/vcp/dev/media/logos
+</VirtualHost>

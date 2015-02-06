@@ -1,0 +1,13 @@
+User svusr148
+Group resgrp148
+Listen 9010
+<VirtualHost *>
+    # doesn't matter
+    ServerName gpp
+    ServerAlias gpp.*
+    DocumentRoot /vol/www/gpvi/dev/htdocs
+
+    <Directory /vol/www/gpvi/dev/htdocs>
+        AllowOverride All
+    </Directory>
+</VirtualHost>

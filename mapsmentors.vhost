@@ -1,0 +1,14 @@
+User svusr323
+Group resgrp323
+Listen 9003
+<VirtualHost *>
+    ServerName mapsmentors
+    ServerAlias mapsmentors.*
+    # django
+    WSGIDaemonProcess mapsmentors processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  mapsmentors
+    WSGIScriptAlias / /vol/www/mapsmentors/dev/mentor/wsgi.py
+
+    Alias /static /vol/www/mapsmentors/dev/static
+</VirtualHost>
+
