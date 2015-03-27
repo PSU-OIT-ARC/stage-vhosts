@@ -1,0 +1,14 @@
+User svusr337
+Group resgrp337
+Listen 9016
+<VirtualHost *>
+    ServerName traq
+    ServerAlias traq.*
+
+    WSGIDaemonProcess traq processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  traq
+    WSGIScriptAlias / /vol/www/traq/dev/traq/wsgi.py
+
+    Alias /static /vol/www/traq/dev/static
+    Alias /media/ /vol/www/traq/dev/media
+</VirtualHost>

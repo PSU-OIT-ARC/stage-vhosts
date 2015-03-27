@@ -4,6 +4,7 @@ Listen 9007
 <VirtualHost *>
     ServerName vcp
     ServerAlias vcp.*
+    ServerAlias *.vcp.*
 
     WSGIDaemonProcess vcp processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
     WSGIProcessGroup  vcp

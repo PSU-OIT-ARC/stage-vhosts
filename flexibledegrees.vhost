@@ -1,0 +1,14 @@
+User svusr311
+Group resgrp311
+Listen 9009
+<VirtualHost *>
+    ServerName flexibledegrees
+    ServerAlias flexibledegrees.*
+    WSGIDaemonProcess rethink-stage processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
+    WSGIProcessGroup  rethink-stage
+    WSGIScriptAlias / /vol/www/rethink/stage/rethink/wsgi.py
+    Alias /static /vol/www/rethink/stage/static
+    Alias /media /vol/www/rethink/stage/media
+    Alias /favicon.ico /vol/www/rethink/stage/static/favicon.ico
+    Alias /robots.txt /vol/www/rethink/stage/static/robots.txt
+</VirtualHost>

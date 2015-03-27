@@ -1,0 +1,10 @@
+Listen 9011
+<VirtualHost *>
+    ServerAlias mcod.*
+    DocumentRoot /vol/www/cod/dev
+    RequestHeader unset Accept-Encoding
+
+    <Directory /vol/www/cod/dev>
+        AllowOverride All
+    </Directory>
+</VirtualHost>

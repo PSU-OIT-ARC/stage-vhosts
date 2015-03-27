@@ -1,0 +1,24 @@
+Listen 9020
+<VirtualHost *:*>
+    ServerName logs
+    ServerAlias logs.*
+    DocumentRoot /vol/www/research/htdocs/logs
+    # proxy all requests off to elasticsearch if the path is /es
+    ProxyPass /es http://themis.rc.pdx.edu:9200/ retry=0
+    ProxyPassreverse /es http://themis.rc.pdx.edu/es:9200
+
+    # allow allow access to this vhost from certain subnets
+    <Location />
+        Order deny,allow
+        SetEnvIf X-Forwarded-For "^131\.252\.135\..*" Allowed
+        SetEnvIf X-Forwarded-For "^131\.252\.134\..*" Allowed
+        SetEnvIf X-Forwarded-For "^131\.252\.132\..*" Allowed
+
+        Deny from all
+        Allow from env=Allowed
+        #Allow from 131.252.135.0/24
+        #Allow from 131.252.134.0/24
+        #Allow from 131.252.132.0/24
+    </Location>
+</VirtualHost>
+
