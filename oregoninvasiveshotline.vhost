@@ -1,0 +1,13 @@
+User svusr368
+Group resgrp368
+Listen 9020
+<VirtualHost *>
+    ServerName oregoninvasiveshotline.stage.rc.pdx.edu
+    WSGIDaemonProcess oregoninvasiveshotline-stage processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/vol/www/oregoninvasiveshotline
+    WSGIProcessGroup oregoninvasiveshotline-stage
+    WSGIScriptAlias / /vol/www/oregoninvasiveshotline/stage/wsgi/wsgi.py
+    Alias /media /vol/www/oregoninvasiveshotline/media/stage
+    Alias /static /vol/www/oregoninvasiveshotline/static/stage
+    Alias /favicon.ico /vol/www/oregoninvasiveshotline/static/stage/favicon.ico
+    Alias /robots.txt /vol/www/oregoninvasiveshotline/static/stage/robots.txt
+</VirtualHost>
