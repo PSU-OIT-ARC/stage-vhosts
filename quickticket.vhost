@@ -1,0 +1,14 @@
+User arc
+Group arc
+Listen 9034
+<VirtualHost *>
+    ServerName quickticket.stage.rc.pdx.edu
+    ServerAlias qt.stage.rc.pdx.edu
+    WSGIDaemonProcess quickticket-stage processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/vol/www/research/dev/quickticket/stage
+    WSGIProcessGroup  quickticket-stage
+    WSGIScriptAlias / /vol/www/research/dev/quickticket/stage/wsgi/wsgi.py
+    Alias /media /vol/www/research/dev/quickticket/media/stage
+    Alias /static /vol/www/research/dev/quickticket/static/stage
+    Alias /favicon.ico /vol/www/research/dev/quickticket/static/stage/favicon.ico
+    Alias /robots.txt /vol/www/research/dev/quickticket/static/stage/robots.txt
+</VirtualHost>
