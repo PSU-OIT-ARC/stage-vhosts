@@ -1,14 +1,14 @@
-User arc
-Group arc
+User svusr159
+Group resgrp159
 Listen 9034
 <VirtualHost *>
     ServerName quickticket.stage.rc.pdx.edu
     ServerAlias qt.stage.rc.pdx.edu
-    WSGIDaemonProcess quickticket-stage processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/vol/www/research/dev/quickticket/stage
-    WSGIProcessGroup  quickticket-stage
-    WSGIScriptAlias / /vol/www/research/dev/quickticket/stage/wsgi/wsgi.py
-    Alias /media /vol/www/research/dev/quickticket/media/stage
-    Alias /static /vol/www/research/dev/quickticket/static/stage
-    Alias /favicon.ico /vol/www/research/dev/quickticket/static/stage/favicon.ico
-    Alias /robots.txt /vol/www/research/dev/quickticket/static/stage/robots.txt
+    WSGIDaemonProcess quickticket processes=2 threads=5 umask=0002 display-name=%{GROUP} home=/vol/www/quickticket/stage
+    WSGIProcessGroup  quickticket
+    WSGIScriptAlias / /vol/www/quickticket/stage/wsgi/wsgi.py
+    Alias /media /vol/www/quickticket/media/stage
+    Alias /static /vol/www/quickticket/static/stage
+    Alias /favicon.ico /vol/www/quickticket/static/stage/favicon.ico
+    Alias /robots.txt /vol/www/quickticket/static/stage/robots.txt
 </VirtualHost>
