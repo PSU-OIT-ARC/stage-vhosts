@@ -1,0 +1,20 @@
+User svusr041
+Group resgrp041
+Listen 9015
+
+<VirtualHost *>
+    ServerName ohw
+    ServerAlias ohw.*
+
+    SSLProxyEngine on
+
+    <Proxy balancer://api>
+        BalancerMember https://oep.stage.rc.pdx.edu/api
+        BalancerMember https://ohp.stage.rc.pdx.edu/api
+    </Proxy>
+
+    ProxyPass /api balancer://api
+    ProxyPassReverse /api balancer://api
+
+    DocumentRoot /vol/www/oep/ohw/stage
+</VirtualHost>
