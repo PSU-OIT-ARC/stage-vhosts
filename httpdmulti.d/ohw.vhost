@@ -1,6 +1,6 @@
-User svusr041
-Group resgrp041
-Listen 9015
+User svusr388
+Group resgrp388
+Listen 9005
 
 <VirtualHost *>
     ServerName ohw
@@ -9,12 +9,12 @@ Listen 9015
     SSLProxyEngine on
 
     <Proxy balancer://api>
-        BalancerMember https://oep.stage.rc.pdx.edu/api
-        BalancerMember https://ohp.stage.rc.pdx.edu/api
+        BalancerMember https://oep.staging.rc.pdx.edu/api
+        BalancerMember https://ohp.staging.rc.pdx.edu/api
     </Proxy>
 
     ProxyPass /api balancer://api
     ProxyPassReverse /api balancer://api
 
-    DocumentRoot /vol/www/oep/ohw/stage
+    DocumentRoot /vol/www/ohw/stage
 </VirtualHost>

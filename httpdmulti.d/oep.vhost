@@ -1,15 +1,21 @@
 User svusr041
 Group resgrp041
-Listen 9004
+Listen 9003
+
 <VirtualHost *>
     ServerName oep
     ServerAlias oep.*
-    WSGIDaemonProcess oep-stage processes=2 threads=25 umask=0002 display-name=%{GROUP} home=/tmp
-    WSGIProcessGroup  oep-stage
-    WSGIScriptAlias / /vol/www/oep/stage/oep/wsgi.py
-    Alias /static /vol/www/oep/stage/static
-    Alias /media /vol/www/oep/stage/media
-    Alias /favicon.ico /vol/www/oep/stage/static/img/favicon.ico
-    Alias /robots.txt /vol/www/oep/stage/static/robots.txt
-</VirtualHost>
 
+    ProxyPreserveHost on
+
+    ProxyPassMatch "^/(media|static)/" !
+    ProxyPassMatch "^/(favicon.ico|robots.txt)$" !
+
+    ProxyPass / http://localhost:8000/
+    ProxyPassReverse / http://localhost:8000/
+
+    Alias /media /vol/www/oep/media/stage
+    Alias /static /vol/www/oep/static/stage
+    Alias /favicon.ico /vol/www/oep/static/stage/favicon.ico
+    Alias /robots.txt /vol/www/oep/static/stage/robots.txt
+</VirtualHost>
