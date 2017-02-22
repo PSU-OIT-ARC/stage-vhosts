@@ -6,13 +6,9 @@ Listen 9004
     ServerName ohp
     ServerAlias ohp.*
 
-    ProxyPreserveHost on
-
-    ProxyPassMatch "^/(media|static)/" !
-    ProxyPassMatch "^/(favicon.ico|robots.txt)$" !
-
-    ProxyPass / http://localhost:8001/
-    ProxyPassReverse / http://localhost:8001/
+    WSGIDaemonProcess ohp processes=2 threads=5 umask=0002 display-name=%{GROUP} home=/vol/www/ohp/stage
+    WSGIProcessGroup  ohp
+    WSGIScriptAlias / /vol/www/ohp/stage/wsgi/wsgi.py
 
     Alias /media /vol/www/ohp/media/stage
     Alias /static /vol/www/ohp/static/stage

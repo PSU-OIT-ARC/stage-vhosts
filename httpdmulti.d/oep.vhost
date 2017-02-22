@@ -6,13 +6,9 @@ Listen 9003
     ServerName oep
     ServerAlias oep.*
 
-    ProxyPreserveHost on
-
-    ProxyPassMatch "^/(media|static)/" !
-    ProxyPassMatch "^/(favicon.ico|robots.txt)$" !
-
-    ProxyPass / http://localhost:8000/
-    ProxyPassReverse / http://localhost:8000/
+    WSGIDaemonProcess oep processes=2 threads=5 umask=0002 display-name=%{GROUP} home=/vol/www/oep/stage
+    WSGIProcessGroup  oep
+    WSGIScriptAlias / /vol/www/oep/stage/wsgi/wsgi.py
 
     Alias /media /vol/www/oep/media/stage
     Alias /static /vol/www/oep/static/stage
